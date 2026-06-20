@@ -1,0 +1,149 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-display: 'Inter', -apple-system, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  --font-sans: 'Inter', -apple-system, sans-serif;
+  --bg-base: #050816;
+  --bg-surface: rgba(15, 23, 42, 0.7);
+  --green-glow-md: 0 0 10px rgba(34, 197, 94, 0.25), 0 0 25px rgba(34, 197, 94, 0.18), 0 0 50px rgba(34, 197, 94, 0.1);
+  --green-glow-lg: 0 0 15px rgba(34, 197, 94, 0.4), 0 0 35px rgba(34, 197, 94, 0.28), 0 0 70px rgba(34, 197, 94, 0.15);
+}
+
+body {
+  background-color: var(--bg-base);
+  color: #ffffff;
+  font-family: 'Inter', sans-serif;
+  overflow-x: hidden;
+}
+
+.premium-card {
+  background: var(--bg-surface);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(34, 197, 94, 0.12);
+  box-shadow: 
+    0 8px 32px 0 rgba(0, 0, 0, 0.5),
+    0 0 15px rgba(34, 197, 94, 0.04);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.premium-card-hover {
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.premium-card-hover:hover {
+  border-color: rgba(34, 197, 94, 0.3);
+  box-shadow: 
+    0 8px 32px 0 rgba(0, 0, 0, 0.6),
+    0 0 20px rgba(34, 197, 94, 0.15),
+    0 0 45px rgba(34, 197, 94, 0.08);
+  transform: translateY(-2px);
+}
+
+/* Custom premium scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #09090b;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #27272a;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #3f3f46;
+}
+
+/* Smooth animations */
+@keyframes slideIn {
+  from {
+    transform: translateY(-0.5rem);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    transform: scale(0.98);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.animate-slide-in {
+  animation: slideIn 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-scale-in {
+  animation: scaleIn 0.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes soft-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+
+.animate-blink {
+  animation: soft-pulse 2s infinite ease-in-out;
+}
+
+@keyframes pulseGlow {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+.animate-pulse-glow {
+  animation: pulseGlow 2s infinite ease-in-out;
+}
+
+/* Reusable green glow touch class */
+.btn-glow {
+  position: relative;
+  transition:
+    box-shadow 0.25s cubic-bezier(0.4,0,0.2,1),
+    transform  0.15s cubic-bezier(0.4,0,0.2,1);
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+}
+
+.btn-glow:hover {
+  box-shadow:
+    0 6px 24px rgba(34,197,94,0.28),
+    0 0 32px rgba(34,197,94,0.12);
+  transform: translateY(-1px);
+}
+
+.btn-glow:active,
+.btn-glow:focus-visible {
+  box-shadow:
+    0 0 0 3px rgba(34,197,94,0.25),
+    0 0 20px rgba(34,197,94,0.45),
+    0 0 50px rgba(34,197,94,0.15);
+  transform: scale(0.97) translateY(0);
+  outline: none;
+}
+
+/* Keyboard focus system for accessibility */
+button:focus-visible,
+input:focus-visible,
+select:focus-visible {
+  outline: none;
+  box-shadow:
+    0 0 0 2px #050816,
+    0 0 0 4px rgba(34,197,94,0.45),
+    0 0 16px rgba(34,197,94,0.20) !important;
+}
