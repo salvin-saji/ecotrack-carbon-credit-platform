@@ -1,8 +1,7 @@
 import { io } from "socket.io-client"
 
 const URL = process.env.REACT_APP_BACKEND_URL
-         || "http://localhost:5000"
-
+  || "https://ecotrack-carbon-credit-platform.onrender.com"
 console.log("[socket.js] Creating socket instance →", URL)
 
 const socket = io(URL, {
